@@ -41,10 +41,9 @@ import {
 
       // Evaluate whether the signature is valid for the provided data
         const validSignature = signature.verify(oraclePublicKey, [id, creditScore]);
-      // Check that the signature is valid
-      // TODO: Check that the provided token from verifying email process on the frontend is in our database of auth tokens 
 
-      // Check that the provided credit score is greater than 700
+      // Check that the provided email hash is greater than 700
+      // Let's assume that if a hash is greater then 700, then it is part of the saved database of valid hashes from emails
         creditScore.assertGte(Field(700));
       // Emit an event containing the verified users id
         this.emitEvent('verified', id);
