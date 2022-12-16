@@ -31,15 +31,8 @@ import {
         ...Permissions.default(),
         editState: Permissions.proofOrSignature(),
       });
+      this.oraclePublicKey.set(PublicKey.fromBase58(ORACLE_PUBLIC_KEY));
     }
-  
-    @method init(zkappKey: PrivateKey) {
-        super.init(zkappKey);
-        // Initialize contract state
-        this.oraclePublicKey.set(PublicKey.fromBase58(ORACLE_PUBLIC_KEY));
-        // Specify that caller should include signature with tx instead of proof
-        this.requireSignature();
-      }
   
     @method verify(id: Field, creditScore: Field, signature: Signature) {
       // Get the oracle public key from the contract state
@@ -49,7 +42,8 @@ import {
       // Evaluate whether the signature is valid for the provided data
         const validSignature = signature.verify(oraclePublicKey, [id, creditScore]);
       // Check that the signature is valid
-  
+      // TODO: Check that the provided token from verifying email process on the frontend is in our database of auth tokens 
+
       // Check that the provided credit score is greater than 700
         creditScore.assertGte(Field(700));
       // Emit an event containing the verified users id

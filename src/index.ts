@@ -1,3 +1,3 @@
-import { OracleExample } from './CreditScoreOracle.js';
+import { OracleExample } from './ValidEmailOracle.js';
 
 export { OracleExample };

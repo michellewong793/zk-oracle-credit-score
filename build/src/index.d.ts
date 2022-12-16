@@ -1,2 +1,2 @@
-import { Add } from './Add.js';
-export { Add };
+import { OracleExample } from './ValidEmailOracle.js';
+export { OracleExample };

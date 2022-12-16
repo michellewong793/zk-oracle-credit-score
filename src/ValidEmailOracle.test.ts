@@ -1,4 +1,4 @@
-import { OracleExample } from './CreditScoreOracle';
+import { OracleExample } from './ValidEmailOracle';
 import {
   isReady,
   shutdown,
@@ -36,7 +36,7 @@ async function localDeploy(
   await txn.send();
 }
 
-describe('CreditScoreOracle', () => {
+describe('ValidEmailOracle', () => {
   let deployerAccount: PrivateKey,
     zkAppAddress: PublicKey,
     zkAppPrivateKey: PrivateKey;
@@ -59,7 +59,7 @@ describe('CreditScoreOracle', () => {
     setTimeout(shutdown, 0);
   });
 
-  it('generates and deploys the `CreditScoreOracle` smart contract', async () => {
+  it('generates and deploys the `ValidEmailOracle` smart contract', async () => {
     const zkAppInstance = new OracleExample(zkAppAddress);
     await localDeploy(zkAppInstance, zkAppPrivateKey, deployerAccount);
     const oraclePublicKey = zkAppInstance.oraclePublicKey.get();
